@@ -7,25 +7,40 @@
     <script src="lib/jquery.js"></script>
     <script src="src/dancer.js"></script>
     <script src="src/blinkyDancer.js"></script>
+    <script src="src/backgroundDancer.js"></script>
+    <script src="src/backgroundDancerMaker.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="topbar">
         <span class="title">DANCE PARTY</span>
         <a href="#" class="addDancerButton" data-dancer-maker-function-name="MakeBlinkyDancer">add chicken pox</a>
+        <a href="#" class="addBackgroundDancerButton">add background dancer</a>
         <label class="switch">
           <input type="checkbox" class="terrifyToggle">
           <div class="slider round"></div>
-        </label> 
+        </label>
+        <audio autoplay>
+        <source src="" type="audio/mpeg"/>
+        Your browser does not support the audio element.
+        </audio>
       </div>
       <div class="humanDancer">
         <div class="michael">
           <div class="mj_legs">
+            <img src="img/mj_legs.png.png">
           </div>
           <div class="mj_chest">
             <img src="img/mj_body_normal.png">
           </div>
           <div class="mj_head">
+            <img src="img/mj_head.png">
+          </div>
+          <div class="mj_left_arm">
+            <img src="img/mj_hand_left.png">
+          </div>
+          <div class="mj_right_arm">
+            <img src="img/mj_hand_right.png">
           </div>
         </div>
         <div class="michael-terrify">

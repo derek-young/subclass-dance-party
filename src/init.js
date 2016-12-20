@@ -38,6 +38,15 @@ $(document).ready(function() {
     );
     $('body').append(dancer.$node);
   });
+  $('.addBackgroundDancerButton').on('click', function(event) {
+
+    var dancer = new MakeBackgroundDancer(
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(dancer.$node);
+  });
 
   $('.terrifyToggle').change(function (event) {
     if ($('.container').hasClass('terrify')) {
@@ -62,7 +71,8 @@ $(document).ready(function() {
         index += 1;
       }
       createMJ.call(null, index);
-    }, 350);
+    }, randomTime());
+
   };
   var createMJLegs = function(index) {
     var legs = ['mj_legs.png', 'mj_legs_reverse.png', 'mj_legs.png', 'mj_legs_reverse.png'];
@@ -75,10 +85,34 @@ $(document).ready(function() {
         index += 1;
       }
       createMJLegs.call(null, index);
-    }, 500);  
+    }, randomTime());  
   };
-  createMJ(0);
-  createMJLegs(0);
+  var createMJArmLeft = function(index) {
+    var arms = ['mj_hand_left.png', 'mj_hand_left1.png', 'mj_hand_left.png', 'mj_hand_left2.png'];
+    $('.mj_left_arm').empty();
+    $('.mj_left_arm').append('<img src="img/' + arms[index] + '">');
+    setTimeout(function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJArmLeft.call(null, index);
+    }, randomTime());  
+  };
+  var createMJArmRight = function(index) {
+    var arms = ['mj_hand_right.png', 'mj_hand_right1.png', 'mj_hand_right.png', 'mj_hand_right2.png'];
+    $('.mj_right_arm').empty();
+    $('.mj_right_arm').append('<img src="img/' + arms[index] + '">');
+    setTimeout(function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJArmRight.call(null, index);
+    }, randomTime());  
+  };
   var createMJTerrify = function(index) {
     var heads = ['mj_head_terrify.png', 'mj_head_terrify_left.png', 'mj_head_terrify.png', 'mj_head_terrify_right.png'];
     $('.mj_head_terrify').empty();
@@ -90,7 +124,7 @@ $(document).ready(function() {
         index += 1;
       }
       createMJTerrify.call(null, index);
-    }, 350);
+    }, randomTime());
   };
   var createMJTerrifyLegs = function(index) {
     var legs = ['mj_legs.png', 'mj_legs_reverse.png', 'mj_legs.png', 'mj_legs_reverse.png'];
@@ -103,9 +137,18 @@ $(document).ready(function() {
         index += 1;
       }
       createMJTerrifyLegs.call(null, index);
-    }, 500);  
+    }, randomTime());
   };
-  createMJTerrify(0);
-  createMJTerrifyLegs(0);
+
+  var randomTime = function() {
+    return Math.floor(Math.random() * 1000);
+  };
+
+  createMJ(1);
+  createMJArmLeft(1);
+  createMJArmRight(1);
+  createMJLegs(1);
+  createMJTerrify(1);
+  createMJTerrifyLegs(1);
 });
 
