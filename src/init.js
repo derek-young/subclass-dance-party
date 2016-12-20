@@ -1,6 +1,15 @@
 $(document).ready(function() {
   window.dancers = [];
 
+
+  var $bodyWidth = $('.container').width() * 0.6;
+  $('.container').css('height', $bodyWidth + 'px');
+
+  $(window).resize(function () {
+    var $bodyWidth = $('.container').width() * 0.6;
+    $('.container').css('height', $bodyWidth + 'px');
+  });
+  
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -50,14 +59,14 @@ $(document).ready(function() {
     $('.mj_legs').empty();
     $('.mj_legs').append('<img src="img/' + legs[index] + '">');
 
-    // setTimeout(function() {
-    //   if (index === 3) {
-    //     index = 0;
-    //   } else {
-    //     index += 1;
-    //   }
-    //   createMJ.call(null, index);
-    // }, 100);
+    setTimeout(function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJ.call(null, index);
+    }, 1000);
   };
 
   createMJ(0);

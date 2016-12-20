@@ -6,5 +6,5 @@ MakeBlinkyDancer.prototype = Object.create(MakeDancer.prototype);
 MakeBlinkyDancer.prototype.constructor = MakeBlinkyDancer;
 MakeBlinkyDancer.prototype.step = function(timeBetweenSteps) {
   this.$node.toggle();
-  setTimeout(this.step.bind(this, timeBetweenSteps), timeBetweenSteps);
+  MakeDancer.prototype.step.call(this, timeBetweenSteps);
 };
