@@ -53,14 +53,14 @@ $(document).ready(function() {
       $('.container').removeClass('terrify');
       $('.michael').show();
       $('.michael-terrify').hide();
-      $('.audio-terrify').remove();
-      $('.topbar').append('<audio autoplay class="audio-normal"><source src="media/billy_jean.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>');
+      $('.audio-terrify').pause();
+      $('.audio-normal').play();
     } else {
       $('.container').addClass('terrify');
       $('.michael-terrify').show();
       $('.michael').hide();
-      $('.audio-normal').remove();
-      $('.topbar').append('<audio autoplay class="audio-terrify"><source src="media/thriller.ogg" type="audio/ogg">Your browser does not support the audio element.</audio>');
+      $('.audio-normal').pause();
+      $('.audio-terrify').play();
     }
   });
 
