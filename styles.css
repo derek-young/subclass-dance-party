@@ -33,6 +33,7 @@ body {
   height:32px;
 }
 .title{
+  font-family: Helvetica;
 }
 .dancer{
   border:10px solid red;
@@ -137,8 +138,8 @@ body {
   width: 100%
 }
 .leftZombie {
-  left: -80%;
+  left: -400%;
 }
 .rightZombie{
-  left: 80%;
+  left: 400%;
 }

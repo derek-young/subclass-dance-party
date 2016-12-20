@@ -55,13 +55,15 @@ $(document).ready(function() {
       $('.michael-terrify').hide();
       $('.audio-terrify').get(0).pause();
       $('.audio-normal').get(0).play();
+      $('.zombie').hide();
     } else {
       $('.container').addClass('terrify');
       $('.michael-terrify').show();
+      $('.zombie').show();
       $('.michael').hide();
       $('.audio-normal').get(0).pause();
       $('.audio-terrify').get(0).play();
-      if($('.zombie').length < 1) {
+      if ($('.zombie').length < 1) {
         addLeftZombie();
         addRightZombie();
       }
@@ -181,9 +183,11 @@ $(document).ready(function() {
   };
   var addLeftZombie = function() {
     $('.michaelDancer').append(LeftZombie());
+    $('.leftZombie').animate({left: '-80%'}, 10000);
   };
   var addRightZombie = function() {
     $('.michaelDancer').append(RightZombie());
+    $('.rightZombie').animate({left: '80%'}, 10000);
   };
   var LeftZombie = function() {
     return $('<div class="leftZombie zombie"><img src="img/zombie_right.gif"></div>');
