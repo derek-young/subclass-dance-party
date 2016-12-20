@@ -169,6 +169,9 @@ $(document).ready(function() {
       createMJArmRightTerrify.call(null, index);
     }, randomTime());
   };
+  var moveMichael = function() {
+    $('.michael')
+  };
   var randomTime = function() {
     return Math.floor(Math.random() * 1000);
   };
@@ -181,5 +184,6 @@ $(document).ready(function() {
   createMJArmLeftTerrify(1);
   createMJArmRightTerrify(1);
   createMJTerrifyLegs(1);
+  moveMichael();
 
 });
