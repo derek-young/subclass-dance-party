@@ -53,7 +53,7 @@ $(document).ready(function() {
 
   var createMJ = function(index) {
     var heads = ['mj_head.png', 'mj_head_left.png', 'mj_head.png', 'mj_head_right.png'];
-    var legs = ['mj_legs.png', 'mj_legs_2.png', 'mj_legs.png', 'mj_legs_2.png'];
+    var legs = ['mj_legs.png', 'mj_legs_reverse.png', 'mj_legs.png', 'mj_legs_reverse.png'];
     $('.mj_head').empty();
     $('.mj_head').append('<img src="img/' + heads[index] + '">');
     $('.mj_legs').empty();

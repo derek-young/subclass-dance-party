@@ -55,19 +55,19 @@ body {
 }
 .mj_head{
   position: relative;
-  left: 14%;
-  top: -358%;
+  left: 22%;
+  top: -355%;
   width: 25%;
 }
 .mj_chest{
   position: relative;
-  top: -233%;
-  left: -7%;
+  top: -230%;
+  left: 3%;
   width: 50%;
 }
 .mj_legs {
   position: relative;
-  width: 50%;
+  width: 60%;
 }
 .michael-terrify {
   display: none;
