@@ -130,15 +130,15 @@ body {
 .zombie {
   position: absolute;
 }
-.zombie img{
-  width: 50%;
+.zombie{
+  width: 60%;
+}
+.zombie img {
+  width: 100%
 }
 .leftZombie {
-  left: -40%;
+  left: -80%;
 }
 .rightZombie{
-  left: 40%;
+  left: 80%;
 }
-
-
-

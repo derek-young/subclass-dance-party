@@ -61,7 +61,10 @@ $(document).ready(function() {
       $('.michael').hide();
       $('.audio-normal').get(0).pause();
       $('.audio-terrify').get(0).play();
-      addZombie();
+      if($('.zombie').length < 1) {
+        addLeftZombie();
+        addRightZombie();
+      }
     }
   });
 
@@ -176,11 +179,11 @@ $(document).ready(function() {
       moveMichael.call(null, randomPosition());
     }, randomTime());
   };
-  var addZombie = function() {
-    var zombieLeft = LeftZombie();
-    var zombieRight = RightZombie();
-    $('.michaelDancer').append(zombieLeft);
-    $('.michaelDancer').append(zombieRight);
+  var addLeftZombie = function() {
+    $('.michaelDancer').append(LeftZombie());
+  };
+  var addRightZombie = function() {
+    $('.michaelDancer').append(RightZombie());
   };
   var LeftZombie = function() {
     return $('<div class="leftZombie zombie"><img src="img/zombie_right.gif"></div>');
