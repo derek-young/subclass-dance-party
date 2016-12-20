@@ -69,6 +69,18 @@ body {
   position: relative;
   width: 60%;
 }
+.mj_left_arm, .mj_right_arm {
+  position: relative;
+  width: 40%
+}
+.mj_left_arm{
+  top: -330%;
+  left: -15%;
+}
+.mj_right_arm{
+  top: -375%;
+  left: 24%;
+}
 .michael-terrify {
   display: none;
   position: absolute;
