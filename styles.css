@@ -19,6 +19,9 @@ body {
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  position: relative;
+  left: -35%;
+
 }
 .topbar{
   height:32px;
@@ -32,4 +35,46 @@ body {
 }
 .terrify{
   background-image: url("img/background_terrify.jpg");
+}
+.michael {
+  position: absolute;
+  left: 40%;
+  top: 55%;
+  height: 18%;
+  width: 18%;
+}
+.mj_head > img{
+  position: absolute;
+  top: -35px;
+  left: 38px;
+  width: 25%;
+}
+.mj_chest > img{
+  position: absolute;
+  width: 50%;
+}
+.mj_legs > img {
+  position: absolute;
+  top: 95px;
+  left: 15px;
+  width: 50%;
+}
+.michael-terrify {
+  display: none;
+  position: relative;
+  left: 50%;
+  top: 400px;
+}
+.michael-terrify .head{
+
+  display: block;
+  height: 5%;
+  width: 5%;
+}
+.michael-terrify .chest{
+  position: relative;
+  right: 3%;
+  margin-top: -15px;
+  height: 10%;
+  width: 10%;
 }

@@ -6,6 +6,7 @@
   width: 35px;
   height: 20px;
   float: right;
+  left: -35%;
 }
 .switch input {display:none;}
 

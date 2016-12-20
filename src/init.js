@@ -29,12 +29,37 @@ $(document).ready(function() {
     );
     $('body').append(dancer.$node);
   });
+
   $('.terrifyToggle').change(function (event) {
     if ($('.container').hasClass('terrify')) {
-      $('.container').removeClass('terrify');       
+      $('.container').removeClass('terrify');
+      $('.michael').show();
+      $('.michael-terrify').hide();     
     } else {
       $('.container').addClass('terrify');
+      $('.michael-terrify').show();
+      $('.michael').hide();
     }
   });
+
+  var createMJ = function(index) {
+    var heads = ['mj_head.png', 'mj_head_left.png', 'mj_head.png', 'mj_head_right.png'];
+    var legs = ['mj_legs.png', 'mj_legs_2.png', 'mj_legs.png', 'mj_legs_2.png'];
+    $('.mj_head').empty();
+    $('.mj_head').append('<img src="img/' + heads[index] + '">');
+    $('.mj_legs').empty();
+    $('.mj_legs').append('<img src="img/' + legs[index] + '">');
+
+    // setTimeout(function() {
+    //   if (index === 3) {
+    //     index = 0;
+    //   } else {
+    //     index += 1;
+    //   }
+    //   createMJ.call(null, index);
+    // }, 100);
+  };
+
+  createMJ(0);
 });
 
