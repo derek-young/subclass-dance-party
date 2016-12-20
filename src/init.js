@@ -29,5 +29,12 @@ $(document).ready(function() {
     );
     $('body').append(dancer.$node);
   });
+  $('.terrifyToggle').change(function (event) {
+    if ($('body').hasClass('terrify')) {
+      $('body').removeClass('terrify');       
+    } else {
+      $('body').addClass('terrify');
+    }
+  });
 });
 
