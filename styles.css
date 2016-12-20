@@ -1,14 +1,19 @@
 body, html{
   height:100%;
 }
-body{
+body {
+  background: black;
   margin: 0px;
+}
+.container{
   background-image: url("img/background_normal.jpg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   font-size: 18px;
   height: 100%;
 }
-body, a:link, a:visited, a:active{
+.container, a:link, a:visited, a:active{
   color: lightblue;
 }
 .title, .addDancerButton{
@@ -27,6 +32,4 @@ body, a:link, a:visited, a:active{
 }
 .terrify{
   background-image: url("img/background_terrify.jpg");
-  background-size: cover;
-  float: right;
 }
