@@ -61,6 +61,7 @@ $(document).ready(function() {
       $('.michael').hide();
       $('.audio-normal').get(0).pause();
       $('.audio-terrify').get(0).play();
+      addZombie();
     }
   });
 
@@ -169,11 +170,29 @@ $(document).ready(function() {
       createMJArmRightTerrify.call(null, index);
     }, randomTime());
   };
-  var moveMichael = function() {
-    $('.michael')
+  var moveMichael = function(position) {
+    $('.michaelDancer').animate({left: + position + '%'}, 3000);
+    setTimeout(function() {
+      moveMichael.call(null, randomPosition());
+    }, randomTime());
+  };
+  var addZombie = function() {
+    var zombieLeft = LeftZombie();
+    var zombieRight = RightZombie();
+    $('.michaelDancer').append(zombieLeft);
+    $('.michaelDancer').append(zombieRight);
+  };
+  var LeftZombie = function() {
+    return $('<div class="leftZombie zombie"><img src="img/zombie_right.gif"></div>');
+  };
+  var RightZombie = function() {
+    return $('<div class="rightZombie zombie"><img src="img/zombie_left.gif"></div>');
   };
   var randomTime = function() {
     return Math.floor(Math.random() * 1000);
+  };
+  var randomPosition = function() {
+    return Math.floor(Math.random() * 90);
   };
 
   createMJ(1);
@@ -184,6 +203,6 @@ $(document).ready(function() {
   createMJArmLeftTerrify(1);
   createMJArmRightTerrify(1);
   createMJTerrifyLegs(1);
-  moveMichael();
+  moveMichael(40);
 
 });
