@@ -9,7 +9,7 @@ $(document).ready(function() {
     var $bodyWidth = $('.container').width() * 0.6;
     $('.container').css('height', $bodyWidth + 'px');
   });
-  
+
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -53,14 +53,14 @@ $(document).ready(function() {
       $('.container').removeClass('terrify');
       $('.michael').show();
       $('.michael-terrify').hide();
-      $('.audio-terrify').pause();
-      $('.audio-normal').play();
+      $('.audio-terrify').get(0).pause();
+      $('.audio-normal').get(0).play();
     } else {
       $('.container').addClass('terrify');
       $('.michael-terrify').show();
       $('.michael').hide();
-      $('.audio-normal').pause();
-      $('.audio-terrify').play();
+      $('.audio-normal').get(0).pause();
+      $('.audio-terrify').get(0).play();
     }
   });
 
@@ -89,7 +89,7 @@ $(document).ready(function() {
         index += 1;
       }
       createMJLegs.call(null, index);
-    }, randomTime());  
+    }, randomTime());
   };
   var createMJArmLeft = function(index) {
     var arms = ['mj_hand_left.png', 'mj_hand_left1.png', 'mj_hand_left.png', 'mj_hand_left2.png'];
@@ -102,7 +102,7 @@ $(document).ready(function() {
         index += 1;
       }
       createMJArmLeft.call(null, index);
-    }, randomTime());  
+    }, randomTime());
   };
   var createMJArmRight = function(index) {
     var arms = ['mj_hand_right.png', 'mj_hand_right1.png', 'mj_hand_right.png', 'mj_hand_right2.png'];
@@ -115,7 +115,7 @@ $(document).ready(function() {
         index += 1;
       }
       createMJArmRight.call(null, index);
-    }, randomTime());  
+    }, randomTime());
   };
   var createMJTerrify = function(index) {
     var heads = ['mj_head_terrify.png', 'mj_head_terrify_left.png', 'mj_head_terrify.png', 'mj_head_terrify_right.png'];
@@ -154,7 +154,7 @@ $(document).ready(function() {
         index += 1;
       }
       createMJArmLeftTerrify.call(null, index);
-    }, randomTime());  
+    }, randomTime());
   };
   var createMJArmRightTerrify = function(index) {
     var arms = ['mj_hand_right.png', 'mj_hand_right1.png', 'mj_hand_right.png', 'mj_hand_right2.png'];
@@ -167,7 +167,7 @@ $(document).ready(function() {
         index += 1;
       }
       createMJArmRightTerrify.call(null, index);
-    }, randomTime());  
+    }, randomTime());
   };
   var randomTime = function() {
     return Math.floor(Math.random() * 1000);
@@ -183,4 +183,3 @@ $(document).ready(function() {
   createMJTerrifyLegs(1);
 
 });
-
