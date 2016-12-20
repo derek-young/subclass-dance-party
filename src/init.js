@@ -53,12 +53,8 @@ $(document).ready(function() {
 
   var createMJ = function(index) {
     var heads = ['mj_head.png', 'mj_head_left.png', 'mj_head.png', 'mj_head_right.png'];
-    var legs = ['mj_legs.png', 'mj_legs_reverse.png', 'mj_legs.png', 'mj_legs_reverse.png'];
     $('.mj_head').empty();
     $('.mj_head').append('<img src="img/' + heads[index] + '">');
-    $('.mj_legs').empty();
-    $('.mj_legs').append('<img src="img/' + legs[index] + '">');
-
     setTimeout(function() {
       if (index === 3) {
         index = 0;
@@ -66,9 +62,50 @@ $(document).ready(function() {
         index += 1;
       }
       createMJ.call(null, index);
-    }, 1000);
+    }, 350);
   };
-
+  var createMJLegs = function(index) {
+    var legs = ['mj_legs.png', 'mj_legs_reverse.png', 'mj_legs.png', 'mj_legs_reverse.png'];
+    $('.mj_legs').empty();
+    $('.mj_legs').append('<img src="img/' + legs[index] + '">');
+    setTimeout(function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJLegs.call(null, index);
+    }, 500);  
+  };
   createMJ(0);
+  createMJLegs(0);
+  var createMJTerrify = function(index) {
+    var heads = ['mj_head_terrify.png', 'mj_head_terrify_left.png', 'mj_head_terrify.png', 'mj_head_terrify_right.png'];
+    $('.mj_head_terrify').empty();
+    $('.mj_head_terrify').append('<img src="img/' + heads[index] + '">');
+    setTimeout (function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJTerrify.call(null, index);
+    }, 350);
+  };
+  var createMJTerrifyLegs = function(index) {
+    var legs = ['mj_legs.png', 'mj_legs_reverse.png', 'mj_legs.png', 'mj_legs_reverse.png'];
+    $('.mj_legs_terrify').empty();
+    $('.mj_legs_terrify').append('<img src="img/' + legs[index] + '">');
+    setTimeout(function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJTerrifyLegs.call(null, index);
+    }, 500);  
+  };
+  createMJTerrify(0);
+  createMJTerrifyLegs(0);
 });
 

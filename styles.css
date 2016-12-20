@@ -56,12 +56,12 @@ body {
 .mj_head{
   position: relative;
   left: 22%;
-  top: -355%;
+  top: -353%;
   width: 25%;
 }
 .mj_chest{
   position: relative;
-  top: -230%;
+  top: -228%;
   left: 3%;
   width: 50%;
 }
@@ -71,19 +71,27 @@ body {
 }
 .michael-terrify {
   display: none;
-  position: relative;
-  left: 50%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
-.michael-terrify .head{
-
-  display: block;
-  height: 5%;
-  width: 5%;
+.michael-terrify img{
+  height: 100%;
+  width: 100%;
 }
-.michael-terrify .chest{
+.mj_head_terrify {
   position: relative;
-  right: 3%;
-  margin-top: -15px;
-  height: 10%;
-  width: 10%;
+  left: 16%;
+  top: -355%;
+  width: 25%;
+}
+.mj_chest_terrify {
+  position: relative;
+  top: -225%;
+  left: 3%;
+  width: 50%;
+}
+.mj_legs_terrify {
+  position: relative;
+  width: 60%;
 }
