@@ -81,17 +81,17 @@ body {
   position: relative;
   width: 60%;
 }
-.mj_left_arm, .mj_right_arm {
+.mj_left_arm, .mj_right_arm, .mj_left_arm_terrify, .mj_right_arm_terrify {
   position: relative;
   width: 40%
 }
 .mj_left_arm{
-  top: -330%;
-  left: -15%;
+  top: -322%;
+  left: -14%;
 }
 .mj_right_arm{
-  top: -375%;
-  left: 24%;
+  top: -369%;
+  left: 26%;
 }
 .michael-terrify {
   display: none;
@@ -119,3 +119,31 @@ body {
   position: relative;
   width: 60%;
 }
+.mj_left_arm_terrify{
+  top: -311%;
+  left: -10%;
+}
+.mj_right_arm_terrify{
+  top: -374%;
+  left: 27%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

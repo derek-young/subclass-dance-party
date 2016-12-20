@@ -52,11 +52,15 @@ $(document).ready(function() {
     if ($('.container').hasClass('terrify')) {
       $('.container').removeClass('terrify');
       $('.michael').show();
-      $('.michael-terrify').hide();     
+      $('.michael-terrify').hide();
+      $('.audio-terrify').remove();
+      $('.topbar').append('<audio autoplay class="audio-normal"><source src="media/billy_jean.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>');
     } else {
       $('.container').addClass('terrify');
       $('.michael-terrify').show();
       $('.michael').hide();
+      $('.audio-normal').remove();
+      $('.topbar').append('<audio autoplay class="audio-terrify"><source src="media/thriller.ogg" type="audio/ogg">Your browser does not support the audio element.</audio>');
     }
   });
 
@@ -139,7 +143,32 @@ $(document).ready(function() {
       createMJTerrifyLegs.call(null, index);
     }, randomTime());
   };
-
+  var createMJArmLeftTerrify = function(index) {
+    var arms = ['mj_hand_left.png', 'mj_hand_left1.png', 'mj_hand_left.png', 'mj_hand_left2.png'];
+    $('.mj_left_arm_terrify').empty();
+    $('.mj_left_arm_terrify').append('<img src="img/' + arms[index] + '">');
+    setTimeout(function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJArmLeftTerrify.call(null, index);
+    }, randomTime());  
+  };
+  var createMJArmRightTerrify = function(index) {
+    var arms = ['mj_hand_right.png', 'mj_hand_right1.png', 'mj_hand_right.png', 'mj_hand_right2.png'];
+    $('.mj_right_arm_terrify').empty();
+    $('.mj_right_arm_terrify').append('<img src="img/' + arms[index] + '">');
+    setTimeout(function() {
+      if (index === 3) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+      createMJArmRightTerrify.call(null, index);
+    }, randomTime());  
+  };
   var randomTime = function() {
     return Math.floor(Math.random() * 1000);
   };
@@ -149,6 +178,9 @@ $(document).ready(function() {
   createMJArmRight(1);
   createMJLegs(1);
   createMJTerrify(1);
+  createMJArmLeftTerrify(1);
+  createMJArmRightTerrify(1);
   createMJTerrifyLegs(1);
+
 });
 
