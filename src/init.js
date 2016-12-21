@@ -1,6 +1,7 @@
 $(document).ready(function() {
   window.dancers = [];
   var lineup = false;
+  var michaelRange = 50;
 
   var $bodyWidth = $('.container').width() * 0.6;
   $('.container').css('height', $bodyWidth + 'px');
@@ -69,22 +70,35 @@ $(document).ready(function() {
       $('.title').text('JACKSON ON');
       if ($('.zombie').length < 1) {
         setTimeout(addLeftZombie, 0);
-        setTimeout(addRightZombie, 0);
+        setTimeout(addRightZombie, 4000);
       }
     }
   });
 
   $('.lineup').on('click', function(event) {
     lineup = true;
+    michaelRange = 25;
 
-    $('.leftZombie').animate({left: '-100%', width: '40%'}, 400, function() {
+    $('.leftZombie').animate({left: '-60%', width: '40%'}, 400, function() {
       $('.leftZombie').find('img').attr('src', 'img/zombie_right.gif');
+      $('.michaelDancer').append(LineupZombieLeft(1));
+      $('.michaelDancer').append(LineupZombieLeft(2));
+      $('.michaelDancer').append(LineupZombieLeft(3));
     });
-    $('.rightZombie').animate({left: '100%', width: '40%'}, 400, function() {
+    $('.rightZombie').animate({left: '75%', width: '40%'}, 400, function() {
       $('.rightZombie').find('img').attr('src', 'img/zombie_left.gif');
+      $('.michaelDancer').append(LineupZombieRight(1));
+      $('.michaelDancer').append(LineupZombieRight(2));
+      $('.michaelDancer').append(LineupZombieRight(3));
     });
   });
 
+  var LineupZombieLeft = function (num) {
+    return $('<div class="lineupleft' + num + ' zombie"><img src="img/zombie_right.gif"></div>');
+  };
+  var LineupZombieRight = function (num) {
+    return $('<div class="lineupright' + num + ' zombie"><img src="img/zombie_left.gif"></div>');
+  };
   var createMJ = function(index) {
     var heads = ['mj_head.png', 'mj_head_left.png', 'mj_head.png', 'mj_head_right.png'];
     $('.mj_head').empty();
@@ -198,13 +212,13 @@ $(document).ready(function() {
   };
   var addLeftZombie = function() {
     $('.michaelDancer').append(LeftZombie());
-    $('.leftZombie').animate({left: '-80%'}, 1000, function() {
+    $('.leftZombie').animate({left: '-80%'}, 10000, function() {
       moveZombie('left', 80);
     });
   };
   var addRightZombie = function() {
     $('.michaelDancer').append(RightZombie());
-    $('.rightZombie').animate({left: '80%'}, 1000, function() {
+    $('.rightZombie').animate({left: '80%'}, 10000, function() {
       moveZombie('right', 80);
     });
   };
@@ -212,7 +226,7 @@ $(document).ready(function() {
     var $zombie = '.' + type + 'Zombie';
     var factor = type === 'left' ? -1 : 1;
     if (!lineup) {
-      if (position === 80) {
+      if (position !== 120) {
         position = 120;
         if (type === 'left') {
           $($zombie).find('img').attr('src', 'img/zombie_left.gif');
@@ -227,10 +241,14 @@ $(document).ready(function() {
           $($zombie).find('img').attr('src', 'img/zombie_left.gif');
         }
       }
+      $($zombie).animate({left: + position * factor + '%'}, randomZombieTime(), function () {
+        moveZombie(type, position);
+      });
+    } else {
+      setTimeout(function() {
+        moveZombie(type, position);
+      }, 1500);
     }
-    $($zombie).animate({left: + position * factor + '%'}, randomZombieTime(), function () {
-      moveZombie(type, position);
-    });
   };
   var LeftZombie = function() {
     return $('<div class="leftZombie zombie"><img src="img/zombie_right.gif"></div>');
@@ -242,7 +260,7 @@ $(document).ready(function() {
     return Math.floor(Math.random() * 500);
   };
   var randomPosition = function() {
-    return Math.floor(Math.random() * 50) + 25;
+    return Math.floor(Math.random() * michaelRange) + 25;
   };
   var randomZombieTime = function() {
     return Math.floor(Math.random() * 6000) + 2000;

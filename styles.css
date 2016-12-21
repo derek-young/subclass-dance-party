@@ -136,8 +136,6 @@ body {
 }
 .zombie {
   position: absolute;
-}
-.zombie{
   width: 60%;
 }
 .zombie img {
@@ -149,4 +147,27 @@ body {
 .rightZombie{
   left: 400%;
 }
-
+.lineupleft1 {
+  left: -90%;
+  width: 46.67%;
+}
+.lineupleft2 {
+  left: -120%;
+  width: 53.34%;
+}
+.lineupleft3 {
+  left: -150%;
+  width: 60%;
+}
+.lineupright1 {
+  left: 100%;
+  width: 46.67%;
+}
+.lineupright2 {
+  left: 130%;
+  width: 53.34%;
+}
+.lineupright3 {
+  left: 160%;
+  width: 60%;
+}
