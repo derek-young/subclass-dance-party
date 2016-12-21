@@ -76,28 +76,35 @@ $(document).ready(function() {
   });
 
   $('.lineup').on('click', function(event) {
-    lineup = true;
-    michaelRange = 25;
+    if (!lineup) {
+      lineup = true;
+      michaelRange = 25;
 
-    $('.leftZombie').animate({left: '-60%', width: '40%'}, 400, function() {
-      $('.leftZombie').find('img').attr('src', 'img/zombie_right.gif');
-      $('.michaelDancer').append(LineupZombieLeft(1));
-      $('.michaelDancer').append(LineupZombieLeft(2));
-      $('.michaelDancer').append(LineupZombieLeft(3));
-    });
-    $('.rightZombie').animate({left: '75%', width: '40%'}, 400, function() {
-      $('.rightZombie').find('img').attr('src', 'img/zombie_left.gif');
-      $('.michaelDancer').append(LineupZombieRight(1));
-      $('.michaelDancer').append(LineupZombieRight(2));
-      $('.michaelDancer').append(LineupZombieRight(3));
-    });
+      $('.leftZombie').animate({left: '-60%', width: '40%'}, 400, function() {
+        $('.leftZombie').find('img').attr('src', 'img/zombie_right.gif');
+        $('.lineupDancers').append(LineupZombieLeft(1));
+        $('.lineupDancers').append(LineupZombieLeft(2));
+        $('.lineupDancers').append(LineupZombieLeft(3));
+      });
+      $('.rightZombie').animate({left: '75%', width: '40%'}, 400, function() {
+        $('.rightZombie').find('img').attr('src', 'img/zombie_left.gif');
+        $('.lineupDancers').append(LineupZombieRight(1));
+        $('.lineupDancers').append(LineupZombieRight(2));
+        $('.lineupDancers').append(LineupZombieRight(3));
+      });
+    } else {
+      lineup = false;
+      $('.leftZombie').animate({left: '-60%', width: '60%'}, 400);
+      $('.rightZombie').animate({left: '75%', width: '60%'}, 400);
+      $('.lineupDancers').empty();
+    }
   });
 
   var LineupZombieLeft = function (num) {
-    return $('<div class="lineupleft' + num + ' zombie"><img src="img/zombie_right.gif"></div>');
+    return $('<div class="lineupleft' + num + ' zombie lineup-zombie"><img src="img/zombie_right.gif"></div>');
   };
   var LineupZombieRight = function (num) {
-    return $('<div class="lineupright' + num + ' zombie"><img src="img/zombie_left.gif"></div>');
+    return $('<div class="lineupright' + num + ' zombie lineup-zombie"><img src="img/zombie_left.gif"></div>');
   };
   var createMJ = function(index) {
     var heads = ['mj_head.png', 'mj_head_left.png', 'mj_head.png', 'mj_head_right.png'];
