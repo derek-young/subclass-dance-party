@@ -2,9 +2,6 @@ $(document).ready(function() {
   window.dancers = [];
   var lineup = false;
   var michaelRange = 50;
-  var armsLeft = ['thriller_arm_left.png', 'thriller_arm_left1.png', 'thriller_arm_left2.png', 'thriller_arm_left1.png'];
-  var armsRight = ['thriller_arm_right.png', 'thriller_arm_right1.png', 'thriller_arm_right2.png', 'thriller_arm_right1.png'];
-  var arms = armsLeft;
 
   var $bodyWidth = $('.container').width() * 0.6;
   $('.container').css('height', $bodyWidth + 'px');
@@ -15,26 +12,8 @@ $(document).ready(function() {
   });
 
   $('.addDancerButton').on('click', function(event) {
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on dancefloor.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
-
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
-
-    // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
-    // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
@@ -111,15 +90,20 @@ $(document).ready(function() {
       lineup = false;
       $('.leftZombie').animate({left: '-60%', width: '60%'}, 400);
       $('.rightZombie').animate({left: '75%', width: '60%'}, 400);
-      $('.lineupDancers').empty();
+      $('.lineup-zombie-left').find('img').attr('src', 'img/zombie_left.gif');
+      $('.lineup-zombie-right').find('img').attr('src', 'img/zombie_right.gif');
+      $('.lineup-zombie-left').animate({left: '-400%'}, 4000, function(){
+        $('.lineupDancers').empty();
+      });
+      $('.lineup-zombie-right').animate({left: '400%'}, 4000);
     }
   });
 
   var LineupZombieLeft = function (num) {
-    return $('<div class="lineupleft' + num + ' zombie lineup-zombie"><img src="img/zombie_right.gif"></div>');
+    return $('<div class="lineupleft' + num + ' zombie lineup-zombie-left"><img src="img/zombie_right.gif"></div>');
   };
   var LineupZombieRight = function (num) {
-    return $('<div class="lineupright' + num + ' zombie lineup-zombie"><img src="img/zombie_left.gif"></div>');
+    return $('<div class="lineupright' + num + ' zombie lineup-zombie-right"><img src="img/zombie_left.gif"></div>');
   };
   var createMJ = function(index) {
     var heads = ['mj_head.png', 'mj_head_left.png', 'mj_head.png', 'mj_head_right.png'];
@@ -200,6 +184,7 @@ $(document).ready(function() {
     }, randomTime());
   };
   var createMJArmLeftTerrify = function(index) {
+    var armsLeft = ['thriller_arm_left.png', 'thriller_arm_left1.png', 'thriller_arm_left2.png', 'thriller_arm_left1.png'];
     $('.mj_left_arm_terrify_left').empty();
     $('.mj_left_arm_terrify_left').append('<img src="img/' + armsLeft[index] + '">');
     $('.mj_left_arm_terrify_right').empty();
@@ -214,6 +199,7 @@ $(document).ready(function() {
     }, randomTime());
   };
   var createMJArmRightTerrify = function(index) {
+    var armsRight = ['thriller_arm_right.png', 'thriller_arm_right1.png', 'thriller_arm_right2.png', 'thriller_arm_right1.png'];
     $('.mj_right_arm_terrify_right').empty();
     $('.mj_right_arm_terrify_right').append('<img src="img/' + armsRight[index] + '">');
     $('.mj_right_arm_terrify_left').empty();
@@ -228,23 +214,28 @@ $(document).ready(function() {
     }, randomTime());
   };
   var moveMichael = function(position) {
-    var currPosition = Math.round($('.michaelDancer').position().left / $bodyWidth * 100);
-
+    var currPosition = Math.round($('.michaelDancer').position().left / $bodyWidth * 100) - 27;
     if (currPosition < position) {
       $('.mj_right_arm_terrify_left').show();
       $('.mj_left_arm_terrify_left').hide();
       $('.mj_right_arm_terrify_right').show();
       $('.mj_left_arm_terrify_right').hide();
+      if (lineup) {
+        $('.zombie').find('img').attr('src', 'img/zombie_right.gif');
+      }
     } else {
       $('.mj_right_arm_terrify_left').hide();
       $('.mj_left_arm_terrify_left').show();
       $('.mj_right_arm_terrify_right').hide();
       $('.mj_left_arm_terrify_right').show();
+      if (lineup) {
+        $('.zombie').find('img').attr('src', 'img/zombie_left.gif');
+      }
     }
-    $('.michaelDancer').animate({left: + position + '%'}, 3000);
+    $('.michaelDancer').animate({left: + position + '%'}, 2000);
     setTimeout(function() {
       moveMichael.call(null, randomPosition());
-    }, 3000);
+    }, 2000);
   };
   var addLeftZombie = function() {
     $('.michaelDancer').append(LeftZombie());
