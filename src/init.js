@@ -185,7 +185,7 @@ $(document).ready(function() {
     }, randomTime());
   };
   var createMJArmLeftTerrify = function(index) {
-    var arms = ['mj_hand_left.png', 'mj_hand_left1.png', 'mj_hand_left.png', 'mj_hand_left2.png'];
+    var arms = ['thriller_arm_left.png', 'thriller_arm_left1.png', 'thriller_arm_left2.png', 'thriller_arm_left1.png'];
     $('.mj_left_arm_terrify').empty();
     $('.mj_left_arm_terrify').append('<img src="img/' + arms[index] + '">');
     setTimeout(function() {
@@ -198,7 +198,7 @@ $(document).ready(function() {
     }, randomTime());
   };
   var createMJArmRightTerrify = function(index) {
-    var arms = ['mj_hand_right.png', 'mj_hand_right1.png', 'mj_hand_right.png', 'mj_hand_right2.png'];
+    var arms = ['thriller_arm_right.png', 'thriller_arm_right1.png', 'thriller_arm_right2.png', 'thriller_arm_right1.png'];
     $('.mj_right_arm_terrify').empty();
     $('.mj_right_arm_terrify').append('<img src="img/' + arms[index] + '">');
     setTimeout(function() {
@@ -221,11 +221,21 @@ $(document).ready(function() {
     $('.leftZombie').animate({left: '-80%'}, 10000, function() {
       moveZombie('left', 80);
     });
+    $('.zombie').hover(function() {
+      $(this).animate({top: '-60%'}, 400 );
+    }, function() {
+      $(this).animate({top: '0%'}, 400 );
+    });
   };
   var addRightZombie = function() {
     $('.michaelDancer').append(RightZombie());
     $('.rightZombie').animate({left: '80%'}, 10000, function() {
       moveZombie('right', 80);
+    });
+    $('.zombie').hover(function() {
+      $(this).animate({top: '-60%'}, 400 );
+    }, function() {
+      $(this).animate({top: '0%'}, 400 );
     });
   };
   var moveZombie = function(type, position) {

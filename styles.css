@@ -127,12 +127,12 @@ body {
   width: 60%;
 }
 .mj_left_arm_terrify{
-  top: -311%;
-  left: -10%;
+  top: -347%;
+  left: -23%;
 }
 .mj_right_arm_terrify{
-  top: -374%;
-  left: 27%;
+  top: -409%;
+  left: 43%;
 }
 .zombie {
   position: absolute;
@@ -156,7 +156,7 @@ body {
   width: 53.34%;
 }
 .lineupleft3 {
-  left: -160%;
+  left: -162%;
   width: 60%;
 }
 .lineupright1 {
