@@ -88,7 +88,7 @@ body {
   position: relative;
   width: 60%;
 }
-.mj_left_arm, .mj_right_arm, .mj_left_arm_terrify, .mj_right_arm_terrify {
+.mj_left_arm, .mj_right_arm, .mj_left_arm_terrify_left, .mj_left_arm_terrify_right, .mj_right_arm_terrify_right, .mj_right_arm_terrify_left {
   position: relative;
   width: 40%
 }
@@ -126,13 +126,21 @@ body {
   position: relative;
   width: 60%;
 }
-.mj_left_arm_terrify{
+.mj_left_arm_terrify_left{
   top: -347%;
   left: -23%;
 }
-.mj_right_arm_terrify{
-  top: -409%;
+.mj_right_arm_terrify_left{
+  top: -355%;
   left: 43%;
+}
+.mj_left_arm_terrify_right{
+  top: -415%;
+  left: 15%;
+}
+.mj_right_arm_terrify_right{
+  top: -409%;
+  left: 7%;
 }
 .zombie {
   position: absolute;

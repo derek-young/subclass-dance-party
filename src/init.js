@@ -2,6 +2,9 @@ $(document).ready(function() {
   window.dancers = [];
   var lineup = false;
   var michaelRange = 50;
+  var armsLeft = ['thriller_arm_left.png', 'thriller_arm_left1.png', 'thriller_arm_left2.png', 'thriller_arm_left1.png'];
+  var armsRight = ['thriller_arm_right.png', 'thriller_arm_right1.png', 'thriller_arm_right2.png', 'thriller_arm_right1.png'];
+  var arms = armsLeft;
 
   var $bodyWidth = $('.container').width() * 0.6;
   $('.container').css('height', $bodyWidth + 'px');
@@ -58,7 +61,7 @@ $(document).ready(function() {
       $('.audio-normal').get(0).play();
       $('.zombie').hide();
       $('.lineup').hide();
-      $('.title').text('JACKSON OFF');
+      $('.title').text('JACKSOFF');
     } else {
       $('.container').addClass('terrify');
       $('.michael-terrify').show();
@@ -67,7 +70,7 @@ $(document).ready(function() {
       $('.audio-normal').get(0).pause();
       $('.audio-terrify').get(0).play();
       $('.lineup').show();
-      $('.title').text('JACKSON ON');
+      $('.title').text('JACKSON');
       if ($('.zombie').length < 1) {
         setTimeout(addLeftZombie, 0);
         setTimeout(addRightZombie, 4000);
@@ -85,12 +88,24 @@ $(document).ready(function() {
         $('.lineupDancers').append(LineupZombieLeft(1));
         $('.lineupDancers').append(LineupZombieLeft(2));
         $('.lineupDancers').append(LineupZombieLeft(3));
+
+        $('.zombie').hover(function() {
+          $(this).animate({top: '-60%'}, 400 );
+        }, function() {
+          $(this).animate({top: '0%'}, 400 );
+        });
       });
       $('.rightZombie').animate({left: '75%', width: '40%'}, 400, function() {
         $('.rightZombie').find('img').attr('src', 'img/zombie_left.gif');
         $('.lineupDancers').append(LineupZombieRight(1));
         $('.lineupDancers').append(LineupZombieRight(2));
         $('.lineupDancers').append(LineupZombieRight(3));
+
+        $('.zombie').hover(function() {
+          $(this).animate({top: '-60%'}, 400 );
+        }, function() {
+          $(this).animate({top: '0%'}, 400 );
+        });
       });
     } else {
       lineup = false;
@@ -185,9 +200,10 @@ $(document).ready(function() {
     }, randomTime());
   };
   var createMJArmLeftTerrify = function(index) {
-    var arms = ['thriller_arm_left.png', 'thriller_arm_left1.png', 'thriller_arm_left2.png', 'thriller_arm_left1.png'];
-    $('.mj_left_arm_terrify').empty();
-    $('.mj_left_arm_terrify').append('<img src="img/' + arms[index] + '">');
+    $('.mj_left_arm_terrify_left').empty();
+    $('.mj_left_arm_terrify_left').append('<img src="img/' + armsLeft[index] + '">');
+    $('.mj_left_arm_terrify_right').empty();
+    $('.mj_left_arm_terrify_right').append('<img src="img/' + armsLeft[index] + '">');
     setTimeout(function() {
       if (index === 3) {
         index = 0;
@@ -198,9 +214,10 @@ $(document).ready(function() {
     }, randomTime());
   };
   var createMJArmRightTerrify = function(index) {
-    var arms = ['thriller_arm_right.png', 'thriller_arm_right1.png', 'thriller_arm_right2.png', 'thriller_arm_right1.png'];
-    $('.mj_right_arm_terrify').empty();
-    $('.mj_right_arm_terrify').append('<img src="img/' + arms[index] + '">');
+    $('.mj_right_arm_terrify_right').empty();
+    $('.mj_right_arm_terrify_right').append('<img src="img/' + armsRight[index] + '">');
+    $('.mj_right_arm_terrify_left').empty();
+    $('.mj_right_arm_terrify_left').append('<img src="img/' + armsRight[index] + '">');
     setTimeout(function() {
       if (index === 3) {
         index = 0;
@@ -211,10 +228,23 @@ $(document).ready(function() {
     }, randomTime());
   };
   var moveMichael = function(position) {
+    var currPosition = Math.round($('.michaelDancer').position().left / $bodyWidth * 100);
+
+    if (currPosition < position) {
+      $('.mj_right_arm_terrify_left').show();
+      $('.mj_left_arm_terrify_left').hide();
+      $('.mj_right_arm_terrify_right').show();
+      $('.mj_left_arm_terrify_right').hide();
+    } else {
+      $('.mj_right_arm_terrify_left').hide();
+      $('.mj_left_arm_terrify_left').show();
+      $('.mj_right_arm_terrify_right').hide();
+      $('.mj_left_arm_terrify_right').show();
+    }
     $('.michaelDancer').animate({left: + position + '%'}, 3000);
     setTimeout(function() {
       moveMichael.call(null, randomPosition());
-    }, randomTime());
+    }, 3000);
   };
   var addLeftZombie = function() {
     $('.michaelDancer').append(LeftZombie());
