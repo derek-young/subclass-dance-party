@@ -56,6 +56,7 @@ $(document).ready(function() {
       $('.audio-terrify').get(0).pause();
       $('.audio-normal').get(0).play();
       $('.zombie').hide();
+      $('.title').text('JACKSON OFF');
     } else {
       $('.container').addClass('terrify');
       $('.michael-terrify').show();
@@ -63,9 +64,10 @@ $(document).ready(function() {
       $('.michael').hide();
       $('.audio-normal').get(0).pause();
       $('.audio-terrify').get(0).play();
+      $('.title').text('JACKSON ON');
       if ($('.zombie').length < 1) {
-        addLeftZombie();
-        addRightZombie();
+        setTimeout(addLeftZombie, 4000);
+        setTimeout(addRightZombie, 8000);
       }
     }
   });
@@ -183,11 +185,39 @@ $(document).ready(function() {
   };
   var addLeftZombie = function() {
     $('.michaelDancer').append(LeftZombie());
-    $('.leftZombie').animate({left: '-80%'}, 10000);
+    $('.leftZombie').animate({left: '-80%'}, 10000, function() {
+      moveZombie('left', 80);
+    });
   };
   var addRightZombie = function() {
     $('.michaelDancer').append(RightZombie());
-    $('.rightZombie').animate({left: '80%'}, 10000);
+    $('.rightZombie').animate({left: '80%'}, 10000, function() {
+      moveZombie('right', 80);
+    });
+  };
+  var moveZombie = function(type, position) {
+    console.log('hit move zombie');
+    var $zombie = '.' + type + 'Zombie';
+    var factor = type === 'left' ? -1 : 1;
+    if (position === 80) {
+      position = 120;
+      if (type === 'left') {
+        $($zombie).find('img').attr('src', 'img/zombie_left.gif');
+      } else {
+        $($zombie).find('img').attr('src', 'img/zombie_right.gif');
+      }
+    } else {
+      position = 80;
+      if (type === 'left') {
+        $($zombie).find('img').attr('src', 'img/zombie_right.gif');
+      } else {
+        $($zombie).find('img').attr('src', 'img/zombie_left.gif');
+      }
+    }
+
+    $($zombie).animate({left: + position * factor + '%'}, randomZombieTime(), function () {
+      moveZombie(type, position);
+    });
   };
   var LeftZombie = function() {
     return $('<div class="leftZombie zombie"><img src="img/zombie_right.gif"></div>');
@@ -199,7 +229,10 @@ $(document).ready(function() {
     return Math.floor(Math.random() * 1000);
   };
   var randomPosition = function() {
-    return Math.floor(Math.random() * 90);
+    return Math.floor(Math.random() * 50) + 25;
+  };
+  var randomZombieTime = function() {
+    return Math.floor(Math.random() * 6000) + 2000;
   };
 
   createMJ(1);
