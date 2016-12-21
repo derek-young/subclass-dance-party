@@ -118,7 +118,6 @@ $(document).ready(function() {
       }
       createMJ.call(null, index);
     }, randomTime());
-
   };
   var createMJLegs = function(index) {
     var legs = ['mj_legs.png', 'mj_legs_reverse.png', 'mj_legs.png', 'mj_legs_reverse.png'];
