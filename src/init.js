@@ -1,6 +1,6 @@
 $(document).ready(function() {
   window.dancers = [];
-
+  var lineup = false;
 
   var $bodyWidth = $('.container').width() * 0.6;
   $('.container').css('height', $bodyWidth + 'px');
@@ -56,6 +56,7 @@ $(document).ready(function() {
       $('.audio-terrify').get(0).pause();
       $('.audio-normal').get(0).play();
       $('.zombie').hide();
+      $('.lineup').hide();
       $('.title').text('JACKSON OFF');
     } else {
       $('.container').addClass('terrify');
@@ -64,12 +65,24 @@ $(document).ready(function() {
       $('.michael').hide();
       $('.audio-normal').get(0).pause();
       $('.audio-terrify').get(0).play();
+      $('.lineup').show();
       $('.title').text('JACKSON ON');
       if ($('.zombie').length < 1) {
-        setTimeout(addLeftZombie, 4000);
-        setTimeout(addRightZombie, 8000);
+        setTimeout(addLeftZombie, 0);
+        setTimeout(addRightZombie, 0);
       }
     }
+  });
+
+  $('.lineup').on('click', function(event) {
+    lineup = true;
+
+    $('.leftZombie').animate({left: '-100%', width: '40%'}, 400, function() {
+      $('.leftZombie').find('img').attr('src', 'img/zombie_right.gif');
+    });
+    $('.rightZombie').animate({left: '100%', width: '40%'}, 400, function() {
+      $('.rightZombie').find('img').attr('src', 'img/zombie_left.gif');
+    });
   });
 
   var createMJ = function(index) {
@@ -185,36 +198,36 @@ $(document).ready(function() {
   };
   var addLeftZombie = function() {
     $('.michaelDancer').append(LeftZombie());
-    $('.leftZombie').animate({left: '-80%'}, 10000, function() {
+    $('.leftZombie').animate({left: '-80%'}, 1000, function() {
       moveZombie('left', 80);
     });
   };
   var addRightZombie = function() {
     $('.michaelDancer').append(RightZombie());
-    $('.rightZombie').animate({left: '80%'}, 10000, function() {
+    $('.rightZombie').animate({left: '80%'}, 1000, function() {
       moveZombie('right', 80);
     });
   };
   var moveZombie = function(type, position) {
-    console.log('hit move zombie');
     var $zombie = '.' + type + 'Zombie';
     var factor = type === 'left' ? -1 : 1;
-    if (position === 80) {
-      position = 120;
-      if (type === 'left') {
-        $($zombie).find('img').attr('src', 'img/zombie_left.gif');
+    if (!lineup) {
+      if (position === 80) {
+        position = 120;
+        if (type === 'left') {
+          $($zombie).find('img').attr('src', 'img/zombie_left.gif');
+        } else {
+          $($zombie).find('img').attr('src', 'img/zombie_right.gif');
+        }
       } else {
-        $($zombie).find('img').attr('src', 'img/zombie_right.gif');
-      }
-    } else {
-      position = 80;
-      if (type === 'left') {
-        $($zombie).find('img').attr('src', 'img/zombie_right.gif');
-      } else {
-        $($zombie).find('img').attr('src', 'img/zombie_left.gif');
+        position = 80;
+        if (type === 'left') {
+          $($zombie).find('img').attr('src', 'img/zombie_right.gif');
+        } else {
+          $($zombie).find('img').attr('src', 'img/zombie_left.gif');
+        }
       }
     }
-
     $($zombie).animate({left: + position * factor + '%'}, randomZombieTime(), function () {
       moveZombie(type, position);
     });
@@ -226,7 +239,7 @@ $(document).ready(function() {
     return $('<div class="rightZombie zombie"><img src="img/zombie_left.gif"></div>');
   };
   var randomTime = function() {
-    return Math.floor(Math.random() * 1000);
+    return Math.floor(Math.random() * 500);
   };
   var randomPosition = function() {
     return Math.floor(Math.random() * 50) + 25;
